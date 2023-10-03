@@ -29,14 +29,19 @@ const userPassword = "1234"
 //엔드포인트 설정
 app.post('/test', async (req, res) => {
     const { id, password } = req.body
-
+    
     try {
         console.log('신호 전달 받음', id, password)
 
         if (id === userId && password === userPassword) {
             const token = jwt.sign({
                 userId: id,
-            })
+            },
+                'secret',
+                {
+                    expiresIn: '2m'
+                }
+            )
             res.status(200).json({ token: token })
         } else {
             res.status(400).json()

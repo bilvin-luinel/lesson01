@@ -40,8 +40,8 @@ const Navbar = () => {
             </div>
             <div style={{ position: 'absolute', right: "50px", display: 'flex', width: "150px", justifyContent: "space-between" }}>
                <p style={{ cursor: "pointer" }}>Search</p>
-               <p style={{ cursor: "pointer" }} onClick={() => navigate('/login')}>Log in</p>
-               {/* <p style={{ cursor: "pointer" }} onClick={handleClickLogin}>{isLogin === true ? "Log out" : "Log in"}</p> */}
+               {/* <p style={{ cursor: "pointer" }} onClick={() => navigate('/login')}>Log in</p> */}
+               <p style={{ cursor: "pointer" }} onClick={handleClickLogin}>{isLogin === true ? "Log out" : "Log in"}</p>
                <p style={{ cursor: "pointer" }}>Cart</p>
             </div>
          </div>

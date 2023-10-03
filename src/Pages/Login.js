@@ -2,80 +2,106 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Underbar from '../Components/Underbar'
 import jwtDecode from 'jwt-decode'
-import { useNavigate } from 'react-router-dom'
+import { createRoutesFromElements, useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
-   const navigate = useNavigate()
+  const navigate = useNavigate()
 
-   const [id, setId] = useState('')
-   const [password, setPassword] = useState('')
+  const [id, setId] = useState('')
+  const [password, setPassword] = useState('')
 
-   const userId = "admin"
-   const userPassword = "1234"
+  const userId = "admin"
+  const userPassword = "1234"
 
 
-   const handleLogin = async () => {
 
-      const response = await fetch('http://182.209.228.24:8585/test', {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json',
-         },
-         body: JSON.stringify({
-            id: id,
-            password: password
-         })
+
+  const handleLogin = async () => {
+
+    const response = await fetch('http://172.30.1.53:8585/test', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: id,
+        password: password
       })
-      if (response.status === 200) {
-         const { token } = await response.json();
-         localStorage.setItem('token', token);
-         navigate('/')
-      } else {
-         alert('실패...')
-      }
+    })
+    if (response.status === 200) {
+      const { token } = await response.json();
+      localStorage.setItem('token', token);
+      navigate('/')
+    } else {
+      alert('실패...')
+    }
+  }
 
-   }
+
+  return (
+    <div>
+      <Navbar />
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ width: "928px", padding: "60px 16px 70px", display: 'flex', flexDirection: "column", alignItems: 'center' }}>
+          <div style={{ fontWeight: 'bold', fontSize: "20px", width: "400px", textAlign: "left", marginBottom: "40px" }}>로그인</div>
+
+          <div style={{ fontSize: "14px", color: "#777777", width: "400px", textAlign: "left", marginBottom: "12px" }}>아이디</div>
 
 
-   return (
-      <div>
-         <Navbar />
-         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <div style={{ width: "928px", padding: "60px 16px 70px", display: 'flex', flexDirection: "column", alignItems: 'center' }}>
-               <div style={{ fontWeight: 'bold', fontSize: "20px", width: "400px", textAlign: "left", marginBottom: "40px" }}>로그인</div>
+          <input
+            className='no-focus'
+            type='text'
+            style={{
+              width: "370px", height: "25px", padding: "10px 15px", border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
+            }}
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+          />
+          <div style={{ fontSize: "14px", color: "#777777                       ", width: "400px", textAlign: "left", marginBottom: "12px" }}>비밀번호</div>
+          <input className='no-focus' type='password' style={{
+            width: "370px", height: "25px", padding: "10px 15px", border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
+          }} value={password} onChange={(e) => setPassword(e.target.value)} />
 
-               <div style={{ fontSize: "14px", color: "#777777", width: "400px", textAlign: "left", marginBottom: "12px" }}>아이디</div>
-               <input className='no-focus' type='text' style={{
-                  width: "370px", height: "25px", padding: "10px 15px", border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
-               }} value={id} onChange={(e) => setId(e.target.value)} />
-               <div style={{ fontSize: "14px", color: "#777777", width: "400px", textAlign: "left", marginBottom: "12px" }}>비밀번호</div>
-               <input className='no-focus' type='password' style={{
-                  width: "370px", height: "25px", padding: "10px 15px", border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
-               }} value={password} onChange={(e) => setPassword(e.target.value)} />
+          <div style={{ display: "flex" }}>
+            <p style={{ fontSize: '14px', cursor: "pointer", marginRight: "30px" }}>비밀번호 찾기</p>
+            <p style={{ fontSize: '14px', cursor: "pointer" }}>비회원 주문 조회하기</p>
+          </div>
 
-               <div style={{ display: "flex" }}>
-                  <p style={{ fontSize: '14px', cursor: "pointer", marginRight: "30px" }}>비밀번호 찾기</p>
-                  <p style={{ fontSize: '14px', cursor: "pointer" }}>비회원 주문 조회하기</p>
-               </div>
 
-               <div style={{
-                  width: "240px", height: "54px", border: "none", borderRadius: "3px", cursor: "pointer",
-                  display: 'flex', justifyContent: 'center', alignItems: "center", marginTop: "30px"
-               }} className='go-to-login' onClick={handleLogin}>
-                  로그인하기
-               </div>
-               <div style={{
-                  width: "240px", height: "54px", border: "1px solid black", borderRadius: "3px", cursor: 'pointer',
-                  display: 'flex', justifyContent: 'center', alignItems: "center", marginTop: "20px"
-               }} className='go-to-signup'>
-                  회원 가입하기
-               </div>
-            </div>
-         </div>
-         <Underbar />
+
+
+          {/* <div style={{
+            width: "240px", height: "54px", border: "none", borderRadius: "3px", cursor: "pointer",
+            display: 'flex', justifyContent: 'center', alignItems: "center", marginTop: "30px"
+          }} className='go-to-login' onClick={handleLogin}>
+            로그인하기
+          </div> */}
+          <div style={{
+            width: "240px", height: "54px",
+            border: "none", borderRadius: "3px", cursor: "pointer",
+            display: 'flex', justifyContent: 'center', alignItems: "center",
+            marginTop: "30px"
+          }}
+            className='go-to-login'
+            onClick={handleLogin}>
+            로그인하기
+          </div>
+
+          <div style={{
+            width: "240px", height: "54px", border: "1px solid black", borderRadius: "3px", cursor: 'pointer',
+            display: 'flex', justifyContent: 'center', alignItems: "center", marginTop: "20px"
+          }} className='go-to-signup'>
+            회원 가입하기
+          </div>
+
+
+
+        </div>
       </div>
-   )
+      <Underbar />
+    </div>
+  )
 }
 
 export default Login
