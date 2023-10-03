@@ -31,7 +31,7 @@ const Navbar = () => {
          </div>
          <div style={{ display: "flex" }}>
             <div style={{ display: "flex", justifyContent: "space-between", width: "450px" }}>
-               <p style={{ cursor: "pointer" }}>NCC D.P</p>
+               <p style={{ cursor: "pointer" }} onClick={()=>navigate('/nccdp')}>NCC D.P</p>
                <p style={{ cursor: "pointer" }}>SHOP</p>
                <p style={{ cursor: "pointer" }}>LOOK</p>
                <p style={{ cursor: "pointer" }}>REVIEW</p>

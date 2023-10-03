@@ -37,6 +37,16 @@ const Login = () => {
     }
   }
 
+  const handleKeyDownLogin = (e) => {
+    const key = e.code;
+    switch (key) {
+      case 'Enter':
+        handleLogin();
+        break;
+      default:
+    }
+  }
+
 
   return (
     <div>
@@ -48,19 +58,15 @@ const Login = () => {
           <div style={{ fontSize: "14px", color: "#777777", width: "400px", textAlign: "left", marginBottom: "12px" }}>아이디</div>
 
 
-          <input
-            className='no-focus'
-            type='text'
-            style={{
-              width: "370px", height: "25px", padding: "10px 15px", border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
-            }}
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+          <input className='no-focus' type='text' style={{
+            width: "370px", height: "25px", padding: "10px 15px",
+            border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
+          }} value={id} onChange={(e) => setId(e.target.value)} onKeyDown={handleKeyDownLogin}
           />
           <div style={{ fontSize: "14px", color: "#777777                       ", width: "400px", textAlign: "left", marginBottom: "12px" }}>비밀번호</div>
           <input className='no-focus' type='password' style={{
             width: "370px", height: "25px", padding: "10px 15px", border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
-          }} value={password} onChange={(e) => setPassword(e.target.value)} />
+          }} value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDownLogin}/>
 
           <div style={{ display: "flex" }}>
             <p style={{ fontSize: '14px', cursor: "pointer", marginRight: "30px" }}>비밀번호 찾기</p>
