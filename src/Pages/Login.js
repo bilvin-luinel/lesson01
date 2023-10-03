@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Underbar from '../Components/Underbar'
 import jwtDecode from 'jwt-decode'
-import { createRoutesFromElements, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
@@ -18,7 +18,6 @@ const Login = () => {
 
 
   const handleLogin = async () => {
-
     const response = await fetch('http://172.30.1.53:8585/test', {
       method: 'POST',
       headers: {
