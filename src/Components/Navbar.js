@@ -6,6 +6,7 @@ const Navbar = () => {
    const navigate = useNavigate()
 
    const [isLogin, setIsLogin] = useState(false)
+   const [isSearch, setIsSearch] = useState(false)
 
    useEffect(() => {
       if (localStorage.getItem('token')) {
@@ -31,19 +32,38 @@ const Navbar = () => {
          </div>
          <div style={{ display: "flex" }}>
             <div style={{ display: "flex", justifyContent: "space-between", width: "450px" }}>
-               <p style={{ cursor: "pointer" }} onClick={()=>navigate('/nccdp')}>NCC D.P</p>
+               <p style={{ cursor: "pointer" }} onClick={() => navigate('/nccdp')}>NCC D.P</p>
                <p style={{ cursor: "pointer" }}>SHOP</p>
                <p style={{ cursor: "pointer" }}>LOOK</p>
                <p style={{ cursor: "pointer" }}>REVIEW</p>
                <p style={{ cursor: "pointer" }}>Q&A</p>
                <p style={{ cursor: "pointer" }}>NOTICE</p>
             </div>
-            <div style={{ position: 'absolute', right: "50px", display: 'flex', width: "150px", justifyContent: "space-between" }}>
-               <p style={{ cursor: "pointer" }}>Search</p>
-               {/* <p style={{ cursor: "pointer" }} onClick={() => navigate('/login')}>Log in</p> */}
-               <p style={{ cursor: "pointer" }} onClick={handleClickLogin}>{isLogin === true ? "Log out" : "Log in"}</p>
-               <p style={{ cursor: "pointer" }}>Cart</p>
-            </div>
+
+            {isSearch === true ? (
+               <div style={{ position: 'absolute', right: "50px", display: 'flex', width: "150px", justifyContent: "space-between",alignItems:"center" }}>
+                  <img src={`${process.env.PUBLIC_URL}/img/search_icon.png`} style={{ width: "30px" }} onClick={()=>setIsSearch(false)} alt='' />
+                  <input className='no-focus' style={{ width: "120px", height: "20px", border: "1px solid black" }} />
+               </div>
+            ) : (
+               <div style={{ position: 'absolute', right: "50px", display: 'flex', width: "150px", justifyContent: "space-between" }}>
+                  <p style={{ cursor: "pointer" }} onClick={() => setIsSearch(true)}>Search</p>
+
+
+                  {/* <p style={{ cursor: "pointer" }} onClick={() => navigate('/login')}>Log in</p> */}
+                  <p style={{ cursor: "pointer" }} onClick={handleClickLogin}>{isLogin === true ? "Log out" : "Log in"}</p>
+
+
+                  <p style={{ cursor: "pointer" }}>Cart</p>
+               </div>
+            )}
+
+
+
+
+
+
+
          </div>
       </div>
    )
