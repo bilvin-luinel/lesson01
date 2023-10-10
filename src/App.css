@@ -19,9 +19,11 @@
   transition: 0.2s ease-out;
   background-color: #4e4e4e;
 }
+
 .go-to-login:not(:hover) {
   transition: 0.2s ease-out;
 }
+
 .go-to-signup {
   background-color: white;
   color: #222222;
@@ -32,6 +34,37 @@
   background-color: #222222;
   color: white;
 }
+
 .go-to-signup:not(:hover) {
   transition: 0.2s ease-out;
+}
+
+
+
+
+
+.navbar-menu-shop-detail {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0s 0.3s;
+}
+
+.navbar-menu-shop-detail:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar-menu-shop:hover~.navbar-menu-shop-detail {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+
+
+.detail-color-box:focus {
+  border: 1px solid red;
+}
+.detail-color-box > option {
+  height: 50px;
 }

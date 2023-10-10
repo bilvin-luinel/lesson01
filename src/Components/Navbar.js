@@ -26,23 +26,35 @@ const Navbar = () => {
    }
 
    return (
-      <div style={{ width: "100vw", padding: "15px 0 30px", display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center" }}>
+      <div style={{ width: "99vw", padding: "15px 0 30px", display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center" }}>
          <div style={{ marginBottom: "40px" }}>
             <h3 style={{ fontSize: "35px", fontWeight: "normal", cursor: "pointer" }} onClick={() => navigate('/')}>New Cheap Chic</h3>
          </div>
          <div style={{ display: "flex" }}>
             <div style={{ display: "flex", justifyContent: "space-between", width: "450px" }}>
-               <p style={{ cursor: "pointer" }} onClick={() => navigate('/nccdp')}>NCC D.P</p>
-               <p style={{ cursor: "pointer" }}>SHOP</p>
-               <p style={{ cursor: "pointer" }}>LOOK</p>
-               <p style={{ cursor: "pointer" }}>REVIEW</p>
-               <p style={{ cursor: "pointer" }}>Q&A</p>
-               <p style={{ cursor: "pointer" }}>NOTICE</p>
+               <p style={{ cursor: 'pointer' }} onClick={() => navigate('/nccdp')}>NCC D.P</p>
+               <p style={{ cursor: 'pointer' }} className='navbar-menu-shop'>SHOP</p>
+               <p style={{ cursor: 'pointer' }}>LOOK</p>
+               <p style={{ cursor: 'pointer' }}>REVIEW</p>
+               <p style={{ cursor: 'pointer' }}>Q&A</p>
+               <p style={{ cursor: 'pointer' }}>NOTICE</p>
+               <div className='navbar-menu-shop-detail' style={{
+                  width: "80px", height: "180px", border: "1px solid rgba(0,0,0,0.1)", position: "absolute", padding: "10px",
+                  marginTop: "22px", marginLeft: "90px", display: "flex", flexDirection: 'column', justifyContent: "space-between"
+               }}>
+                  <p style={{ cursor: 'pointer' }}>NEW 10%</p>
+                  <p style={{ cursor: 'pointer' }}>BEST</p>
+                  <p style={{ cursor: 'pointer' }}>OUTER</p>
+                  <p style={{ cursor: 'pointer' }}>TOP</p>
+                  <p style={{ cursor: 'pointer' }}>TROUSERS</p>
+                  <p style={{ cursor: 'pointer' }}>ACC</p>
+                  <p style={{ cursor: 'pointer' }}>SALE</p>
+               </div>
             </div>
 
             {isSearch === true ? (
-               <div style={{ position: 'absolute', right: "50px", display: 'flex', width: "150px", justifyContent: "space-between",alignItems:"center" }}>
-                  <img src={`${process.env.PUBLIC_URL}/img/search_icon.png`} style={{ width: "30px" }} onClick={()=>setIsSearch(false)} alt='' />
+               <div style={{ position: 'absolute', right: "50px", display: 'flex', width: "150px", justifyContent: "space-between", alignItems: "center" }}>
+                  <img src={`${process.env.PUBLIC_URL}/img/search_icon.png`} style={{ width: "30px" }} onClick={() => setIsSearch(false)} alt='' />
                   <input className='no-focus' style={{ width: "120px", height: "20px", border: "1px solid black" }} />
                </div>
             ) : (
