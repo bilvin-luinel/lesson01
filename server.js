@@ -85,5 +85,27 @@ const newUser = async () => {
         console.log(er)
     }
 }
+const newItem = async () => {
+    try {
+        const newItem = new Item({
+            code: 1000,
+            name: 'noop collar over mtm',
+            price: 59000,
+            explanation: '돈 아깝다 아무리 봐도',
+            color: ['black','white','gray'],
+            category: 1,
+            img: ['item1.png'],
+            best: false,
+            sale: false ,
+        })
+        const savedItem = await newItem.save()
+        if (savedItem) {
+            console.log('새로운 아이템 정보 저장됨.', savedItem.name)
+        }
+    } catch (err) {
+        console.log(er)
+    }
+}
 
 // newUser()
+// newItem()
