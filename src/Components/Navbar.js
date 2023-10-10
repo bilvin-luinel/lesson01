@@ -39,7 +39,7 @@ const Navbar = () => {
                <p style={{ cursor: 'pointer' }}>Q&A</p>
                <p style={{ cursor: 'pointer' }}>NOTICE</p>
                <div className='navbar-menu-shop-detail' style={{
-                  width: "80px", height: "180px", border: "1px solid rgba(0,0,0,0.1)", position: "absolute", padding: "10px",
+                  width: "80px", height: "200px", border: "1px solid rgba(0,0,0,0.1)", position: "absolute", padding: "10px", backgroundColor:'white',
                   marginTop: "22px", marginLeft: "90px", display: "flex", flexDirection: 'column', justifyContent: "space-between"
                }}>
                   <p style={{ cursor: 'pointer' }}>NEW 10%</p>
