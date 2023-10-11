@@ -11,14 +11,17 @@ const Login = () => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
 
-  const userId = "admin"
-  const userPassword = "1234"
-
+  useEffect(() => {
+    window.scrollTo({
+       top: 0,
+       behavior: 'smooth',
+    });
+ }, [])
 
 
 
   const handleLogin = async () => {
-    const response = await fetch('http://182.209.228.24:8585/login', {
+    const response = await fetch('http://172.30.1.86:8585/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +36,7 @@ const Login = () => {
       localStorage.setItem('token', token);
       navigate('/')
     } else {
-      alert('실패...')
+      alert('잘못된 아이디 또는 비밀번호입니다.')
     }
   }
 
