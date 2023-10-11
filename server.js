@@ -111,7 +111,7 @@ const newUser = async () => {
          console.log('새로운 유저 정보 저장됨.', savedUser.id, savedUser.password, savedUser.nickName)
       }
    } catch (err) {
-      console.log(er)
+      console.log(err)
    }
 }
 const newItem = async () => {

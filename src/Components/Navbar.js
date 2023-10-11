@@ -26,7 +26,7 @@ const Navbar = () => {
    }
 
    return (
-      <div style={{ width: "99vw", padding: "15px 0 30px", display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center" }}>
+      <div style={{ width: "99vw", padding: "15px 0 30px", display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center"}}>
          <div style={{ marginBottom: "40px" }}>
             <h3 style={{ fontSize: "35px", fontWeight: "normal", cursor: "pointer" }} onClick={() => navigate('/')}>New Cheap Chic</h3>
          </div>

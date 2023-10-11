@@ -79,7 +79,7 @@ const Detail = () => {
                <img src={`${process.env.PUBLIC_URL}/img/${item.img[0]}`} style={{ width: "50vw" }} alt='' />
             )}
 
-            <div style={{ width: '26vw', marginTop: "30px" }}>
+            <div style={{ width: '26vw',marginTop:"30px"}}>
                {/* <h3 style={{ fontSize: "32px" }}>noop collar over mtm</h3> */}
                <h3 style={{ fontSize: "32px" }}>{item.name}</h3>
 
@@ -97,17 +97,16 @@ const Detail = () => {
                   </div>
                </div>
                <p style={{ fontSize: "13px", color: 'rgba(0,0,0,0.7)', marginTop: "50px" }}>color</p>
-               <select className='no-focus detail-color-box' style={{ width: "130px", height: "40px", border: "1px solid rgba(0,0,0,0.2)", marginTop: '10px', color: 'rgba(0,0,0,0.5)', fontSize: '16px' }}>
+               <select className='no-focus' style={{ width: "130px", height: "40px", border: "1px solid rgba(0,0,0,0.2)", marginTop: '10px', color: 'rgba(0,0,0,0.5)', fontSize: '16px' }}>
                   <option value=''>선택하세요.</option>
-                  {/* <option value='black'>black</option>
+                  <option value='black'>black</option>
                   <option value='white'>white</option>
-                  <option value='gray'>gray</option> */}
-                  {item.color?.[0] && (
+                  <option value='gray'>gray</option>
+                  {/* {item.color?.[0] && (
                      item.color.map((color, index) => (
                         <option value={color}>{color}</option>
                      ))
-                  )}
-
+                  )} */}
                </select>
                <div style={{ width: '100%', height: '1px', borderTop: '1px solid rgba(0,0,0,0.3)', marginTop: '40px' }} />
                <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', fontSize: '14px', marginTop: '50px' }}>
