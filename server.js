@@ -14,7 +14,7 @@ const User = require('./models/User')
 
 
 //서버 실행
-const port = process.env.PORT || 8585;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
    console.log(`Server is running on port ${port}`);
 });
@@ -176,4 +176,4 @@ const newItem = async () => {
 }
 
 // newUser()
-newItem()
+// newItem()
