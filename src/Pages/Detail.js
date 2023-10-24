@@ -41,7 +41,7 @@ const Detail = () => {
 
    const fetchData = async () => {
       try {
-         const response = await fetch('http://172.30.1.67:8585/fetch-data-detail', {
+         const response = await fetch('http://172.30.1.49:8585/fetch-data-detail', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
@@ -99,14 +99,14 @@ const Detail = () => {
                <p style={{ fontSize: "13px", color: 'rgba(0,0,0,0.7)', marginTop: "50px" }}>color</p>
                <select className='no-focus' style={{ width: "130px", height: "40px", border: "1px solid rgba(0,0,0,0.2)", marginTop: '10px', color: 'rgba(0,0,0,0.5)', fontSize: '16px' }}>
                   <option value=''>선택하세요.</option>
-                  <option value='black'>black</option>
+                  {/* <option value='black'>black</option>
                   <option value='white'>white</option>
-                  <option value='gray'>gray</option>
-                  {/* {item.color?.[0] && (
+                  <option value='gray'>gray</option> */}
+                  {item.color?.[0] && (
                      item.color.map((color, index) => (
                         <option value={color}>{color}</option>
                      ))
-                  )} */}
+                  )}
                </select>
                <div style={{ width: '100%', height: '1px', borderTop: '1px solid rgba(0,0,0,0.3)', marginTop: '40px' }} />
                <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', fontSize: '14px', marginTop: '50px' }}>

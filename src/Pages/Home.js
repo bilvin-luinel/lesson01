@@ -7,11 +7,11 @@ const Home = () => {
 
   const navigate = useNavigate()
 
-
+  //useState
   const [isLogin, setIsLogin] = useState(false)
   const [items, setItems] = useState([])
 
-
+  //useEffect
   useEffect(() => {
     if (localStorage.getItem('token')) {
       setIsLogin(true)
@@ -21,9 +21,11 @@ const Home = () => {
     fetchData()
   }, [])
 
+
+  //function
   const fetchData = async () => {
     try {
-      const response = await fetch('http://172.30.1.67:8585/fetch-data-home')
+      const response = await fetch('http://172.30.1.49:8585/fetch-data-home')
       const data = await response.json()
       setItems(data)
     } catch (err) {
@@ -31,8 +33,12 @@ const Home = () => {
     }
   }
 
+  const array = [ 10, 20, 30, 40, 50]
+  array.map((item, index)=>{
+    console.log('test : ',array[index])
+    console.log('test : ',item)
 
-
+  })
 
   return (
     <div>

@@ -14,7 +14,7 @@ const User = require('./models/User')
 
 
 //서버 실행
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8585;
 app.listen(port, () => {
    console.log(`Server is running on port ${port}`);
 });
@@ -116,39 +116,6 @@ const newUser = async () => {
 }
 const newItem = async () => {
    try {
-      // const newItem = new Item({
-      //    code: 1000,
-      //    name: 'noop collar over mtm',
-      //    price: 59000,
-      //    explanation: '돈 아깝다 아무리 봐도',
-      //    color: ['black', 'white', 'gray'],
-      //    category: 1,
-      //    img: ['item1.jpg'],
-      //    best: false,
-      //    sale: false,
-      // })
-      // const newItem = new Item({
-      //    code: 1001,
-      //    name: 'PARIS cable knit',
-      //    price: 48000,
-      //    explanation: '파리와 무슨 연관인지는 모르겠다. 니트인 것 같다.',
-      //    color: ['black', 'cream', 'gray', 'navy'],
-      //    category: 1,
-      //    img: ['item2.jpg'],
-      //    best: false,
-      //    sale: false,
-      // })
-      // const newItem = new Item({
-      //    code: 2000,
-      //    name: 'parachute cargo denim pants',
-      //    price: 69000,
-      //    explanation: '이름을 왜 다 영어로 짓는 걸까 한국 쇼핑몰인데...',
-      //    color: ['gray','black'],
-      //    category: 2,
-      //    img: ['item3.jpg'],
-      //    best: false,
-      //    sale: false,
-      // })
       const newItem = new Item({
          code: 3000,
          name: 'effect crack suede jacket',
@@ -171,9 +138,9 @@ const newItem = async () => {
          }
       }
    } catch (err) {
-      console.log(er)
+      console.log(err)
    }
 }
 
 // newUser()
-// newItem()
+newItem()

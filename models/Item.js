@@ -53,4 +53,7 @@ const Item = mongoose.model('Item', itemSchema);
 
 module.exports = Item;
 
+
+
+
 //카테고리 1은 TOP, 2는 TROUSERS, 3은 OUTER ,4는 ACC
