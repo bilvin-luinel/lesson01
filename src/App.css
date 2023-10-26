@@ -59,13 +59,3 @@
   visibility: visible;
   transition-delay: 0s;
 }
-
-
-
-.detail-color-box:focus {
-  border: 1px solid red;
-}
-
-.detail-color-box>option {
-  height: 50px;
-}

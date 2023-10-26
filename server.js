@@ -69,6 +69,30 @@ app.post('/login', async (req, res) => {
     }
 })
 
+app.get('/fetch-data-home', async (req, res) => {
+    try {
+        const items = await Item.find()
+        res.send(items)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
+})
+app.post('/fetch-data-detail', async (req, res) => {
+    const { itemCode } = req.body;
+    try {
+        const item = await Item.findOne({ code: itemCode })
+        if (item) {
+            res.status(200).json(item)
+        } else {
+            res.status(404).json()
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
+})
+
 app.post('/check-admin', async (req, res) => {
     const { userId } = req.body
     try {
@@ -89,6 +113,11 @@ app.post('/check-admin', async (req, res) => {
 })
 
 
+
+
+
+
+//회원 , 아이템 추가 함수
 const newUser = async () => {
     try {
         const newUser = new User({
@@ -101,30 +130,36 @@ const newUser = async () => {
             console.log('새로운 유저 정보 저장됨.', savedUser.id, savedUser.password, savedUser.nickName)
         }
     } catch (err) {
-        console.log(er)
+        console.log(err)
     }
 }
 const newItem = async () => {
     try {
         const newItem = new Item({
-            code: 1000,
-            name: 'noop collar over mtm',
-            price: 59000,
-            explanation: '돈 아깝다 아무리 봐도',
-            color: ['black', 'white', 'gray'],
-            category: 1,
-            img: ['item1.png'],
+            code: 3000,
+            name: 'effect crack suede jacket',
+            price: 96000,
+            explanation: '이제 이거 두어 개 살 돈으로 정장을 한 벌 사는 게 맞지 않나..',
+            color: ['black', 'charcoal'],
+            category: 3,
+            img: ['item4.jpg'],
             best: false,
             sale: false,
         })
-        const savedItem = await newItem.save()
-        if (savedItem) {
-            console.log('새로운 아이템 정보 저장됨.', savedItem.name)
+        const alreadyItem = await Item.findOne({ code: newItem.code })
+        if (alreadyItem) {
+            console.log('중복된 코드입니다.')
+            return
+        } else {
+            const savedItem = await newItem.save()
+            if (savedItem) {
+                console.log('새로운 아이템 정보 저장됨.', savedItem.name)
+            }
         }
     } catch (err) {
-        console.log(er)
+        console.log(err)
     }
 }
 
 // newUser()
-// newItem()
+newItem()

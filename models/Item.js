@@ -30,7 +30,7 @@ const itemSchema = new Schema({
     category: {
         type: Number,
         required: false,
-        default: 0,
+        default: 1,
     },
     img: {
         type: Array,
@@ -53,4 +53,7 @@ const Item = mongoose.model('Item', itemSchema);
 
 module.exports = Item;
 
-//카테고리 0은 OUTER, 1은 TOP, 2는 TROUSERS, 3은 ACC
+
+
+
+//카테고리 1은 TOP, 2는 TROUSERS, 3은 OUTER ,4는 ACC

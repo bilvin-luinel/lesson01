@@ -11,14 +11,17 @@ const Login = () => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
 
-  const userId = "admin"
-  const userPassword = "1234"
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [])
 
 
 
   const handleLogin = async () => {
-    const response = await fetch('http://182.209.228.24:8585/login', {
+    const response = await fetch('http://172.30.1.49:8585/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +36,7 @@ const Login = () => {
       localStorage.setItem('token', token);
       navigate('/')
     } else {
-      alert('실패...')
+      alert('잘못된 아이디 또는 비밀번호입니다.')
     }
   }
 
@@ -56,17 +59,17 @@ const Login = () => {
           <div style={{ fontWeight: 'bold', fontSize: "20px", width: "400px", textAlign: "left", marginBottom: "40px" }}>로그인</div>
 
           <div style={{ fontSize: "14px", color: "#777777", width: "400px", textAlign: "left", marginBottom: "12px" }}>아이디</div>
-
-
           <input className='no-focus' type='text' style={{
             width: "370px", height: "25px", padding: "10px 15px",
             border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
           }} value={id} onChange={(e) => setId(e.target.value)} onKeyDown={handleKeyDownLogin}
           />
-          <div style={{ fontSize: "14px", color: "#777777                       ", width: "400px", textAlign: "left", marginBottom: "12px" }}>비밀번호</div>
+
+
+          <div style={{ fontSize: "14px", color: "#777777", width: "400px", textAlign: "left", marginBottom: "12px" }}>비밀번호</div>
           <input className='no-focus' type='password' style={{
             width: "370px", height: "25px", padding: "10px 15px", border: "1px solid rgba(0,0,0,0.3)", fontSize: "16px", marginBottom: "25px"
-          }} value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDownLogin}/>
+          }} value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDownLogin} />
 
           <div style={{ display: "flex" }}>
             <p style={{ fontSize: '14px', cursor: "pointer", marginRight: "30px" }}>비밀번호 찾기</p>

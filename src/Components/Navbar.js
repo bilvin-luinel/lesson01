@@ -26,7 +26,7 @@ const Navbar = () => {
    }
 
    return (
-      <div style={{ width: "99vw", padding: "15px 0 30px", display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center" }}>
+      <div style={{ width: "99vw", padding: "15px 0 30px", display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center"}}>
          <div style={{ marginBottom: "40px" }}>
             <h3 style={{ fontSize: "35px", fontWeight: "normal", cursor: "pointer" }} onClick={() => navigate('/')}>New Cheap Chic</h3>
          </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
                <p style={{ cursor: 'pointer' }}>Q&A</p>
                <p style={{ cursor: 'pointer' }}>NOTICE</p>
                <div className='navbar-menu-shop-detail' style={{
-                  width: "80px", height: "200px", border: "1px solid rgba(0,0,0,0.1)", position: "absolute", padding: "10px", backgroundColor:'white',
+                  width: "80px", height: "200px", border: "1px solid rgba(0,0,0,0.1)", position: "absolute", padding: "10px", backgroundColor: 'white',
                   marginTop: "22px", marginLeft: "90px", display: "flex", flexDirection: 'column', justifyContent: "space-between"
                }}>
                   <p style={{ cursor: 'pointer' }}>NEW 10%</p>
