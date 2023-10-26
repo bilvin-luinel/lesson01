@@ -69,6 +69,25 @@ app.post('/login', async (req, res) => {
     }
 })
 
+app.post('/check-admin', async (req, res) => {
+    const { userId } = req.body
+    try {
+        const user = await User.findById(userId)
+        if (user) {
+            if (user.grade === 6) {
+                res.status(200).json()
+            } else {
+                res.status(400).json()
+            }
+        } else {
+            res.status(400).json()
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
+})
+
 
 const newUser = async () => {
     try {
@@ -92,11 +111,11 @@ const newItem = async () => {
             name: 'noop collar over mtm',
             price: 59000,
             explanation: '돈 아깝다 아무리 봐도',
-            color: ['black','white','gray'],
+            color: ['black', 'white', 'gray'],
             category: 1,
             img: ['item1.png'],
             best: false,
-            sale: false ,
+            sale: false,
         })
         const savedItem = await newItem.save()
         if (savedItem) {
