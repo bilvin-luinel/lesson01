@@ -12,7 +12,6 @@ const User = require('./models/User')
 
 
 
-
 //서버 실행
 const port = process.env.PORT || 8585;
 app.listen(port, () => {
@@ -162,4 +161,6 @@ const newItem = async () => {
 }
 
 // newUser()
-newItem()
+// newItem()
+
+

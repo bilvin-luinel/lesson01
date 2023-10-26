@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Underbar from '../Components/Underbar'
 import { useNavigate } from 'react-router-dom'
+import jwtDecode from 'jwt-decode'
 
 const Home = () => {
 
@@ -32,13 +33,6 @@ const Home = () => {
       console.log('loading error', err)
     }
   }
-
-  const array = [ 10, 20, 30, 40, 50]
-  array.map((item, index)=>{
-    console.log('test : ',array[index])
-    console.log('test : ',item)
-
-  })
 
   return (
     <div>

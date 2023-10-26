@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar_Admin = () => {
 
    const navigate = useNavigate()
 
@@ -53,7 +53,7 @@ const Navbar = () => {
             <div style={{ display: "flex", justifyContent: "space-between", width: "450px" }}>
                <p style={{ cursor: 'pointer' }} onClick={() => navigate('/nccdp')}>NCC D.P</p>
                <p style={{ cursor: 'pointer' }} className='navbar-menu-shop'>SHOP</p>
-               <p style={{ cursor: 'pointer' }}>LOOK</p>
+               <p style={{ cursor: 'pointer' }}>LOO</p>
                <p style={{ cursor: 'pointer' }}>REVIEW</p>
                <p style={{ cursor: 'pointer' }}>Q&A</p>
                <p style={{ cursor: 'pointer' }}>NOTICE</p>
@@ -105,4 +105,4 @@ const Navbar = () => {
    )
 }
 
-export default Navbar
+export default Navbar_Admin

@@ -14,7 +14,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/nccdp' element={<NccDp />} />
         <Route path='/detail/:id' element={<Detail />} />
-        <Route path='/admin' element={<Admin />} />
+        <Route path='/admin/:id' element={<Admin />} />
       </Routes>
     </div>
   );
