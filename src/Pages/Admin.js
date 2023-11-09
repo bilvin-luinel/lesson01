@@ -22,7 +22,7 @@ const Admin = () => {
    }, [])
 
    const checkAdmin = async () => {
-      const response = await fetch('http://172.30.1.49:8585/check-admin', {
+      const response = await fetch('http://172.30.1.48:8585/check-admin', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
