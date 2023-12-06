@@ -19,7 +19,7 @@ const Navbar = () => {
    }, [dispatch])
 
    const fetchPoint = async () => {
-      const response = await fetch('http://172.30.1.99:8585/fetch-point', {
+      const response = await fetch('http://172.30.1.79:8585/fetch-point', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Navbar = () => {
    }
 
    const checkAdmin = async () => {
-      const response = await fetch('http://172.30.1.99:8585/check-admin', {
+      const response = await fetch('http://172.30.1.79:8585/check-admin', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',

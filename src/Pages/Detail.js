@@ -41,7 +41,7 @@ const Detail = () => {
 
    const fetchData = async () => {
       try {
-         const response = await fetch('http://172.30.1.99:8585/fetch-data-detail', {
+         const response = await fetch('http://172.30.1.79:8585/fetch-data-detail', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',

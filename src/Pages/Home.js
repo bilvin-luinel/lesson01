@@ -26,7 +26,7 @@ const Home = () => {
   //function
   const fetchData = async () => {
     try {
-      const response = await fetch('http://172.30.1.99:8585/fetch-data-home')
+      const response = await fetch('http://172.30.1.79:8585/fetch-data-home')
       const data = await response.json()
       setItems(data)
     } catch (err) {

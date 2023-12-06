@@ -33,7 +33,7 @@ const NccDp = () => {
    }, [dispatch])
 
    const fetchPoint = async () => {
-      const response = await fetch('http://172.30.1.99:8585/fetch-point', {
+      const response = await fetch('http://172.30.1.79:8585/fetch-point', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const NccDp = () => {
 
    const addPoint_1000 = async () => {
       if (localStorage.getItem('token')) {
-         const response = await fetch('http://172.30.1.99:8585/add-point-1000', {
+         const response = await fetch('http://172.30.1.79:8585/add-point-1000', {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
