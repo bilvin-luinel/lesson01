@@ -1,8 +1,45 @@
 import jwtDecode from 'jwt-decode'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { updatePoint } from '../redux/actions/pointAction';
+
 
 const Navbar = () => {
+
+   const dispatch = useDispatch()
+   const currentPoint = useSelector((state) => state.point.point)
+
+   useEffect(() => {
+      if (!localStorage.getItem('token')) {
+         return
+      } else {
+         fetchPoint()
+      }
+   }, [dispatch])
+
+   const fetchPoint = async () => {
+      const response = await fetch('http://172.30.1.99:8585/fetch-point', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+            userId: jwtDecode(localStorage.getItem('token')).userId
+         })
+      })
+      if (response.status === 200) {
+         const data = await response.json()
+         dispatch(updatePoint(data))
+      }
+   }
+
+
+
+
+
+
+
 
    const navigate = useNavigate()
 
@@ -30,7 +67,7 @@ const Navbar = () => {
    }
 
    const checkAdmin = async () => {
-      const response = await fetch('http://172.30.1.48:8585/check-admin', {
+      const response = await fetch('http://172.30.1.99:8585/check-admin', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
@@ -61,7 +98,7 @@ const Navbar = () => {
                   width: "80px", height: "200px", border: "1px solid rgba(0,0,0,0.1)", position: "absolute", padding: "10px", backgroundColor: 'white',
                   marginTop: "22px", marginLeft: "90px", display: "flex", flexDirection: 'column', justifyContent: "space-between"
                }}>
-                  <p style={{ cursor: 'pointer' }}>NEW 10%</p>
+                  <p style={{ cursor: 'pointer' }} onClick={() => navigate('/dolim')}>NEW 10%</p>
                   <p style={{ cursor: 'pointer' }}>BEST</p>
                   <p style={{ cursor: 'pointer' }}>OUTER</p>
                   <p style={{ cursor: 'pointer' }}>TOP</p>
@@ -77,7 +114,11 @@ const Navbar = () => {
                   <input className='no-focus' style={{ width: "120px", height: "20px", border: "1px solid black" }} />
                </div>
             ) : (
-               <div style={{ position: 'absolute', right: "50px", display: 'flex', width: isManager ? '220px' : '150px', justifyContent: "space-between" }}>
+               <div style={{ position: 'absolute', right: "50px", display: 'flex', width: isManager ? '320px' : '250px', justifyContent: "space-between" }}>
+                  {currentPoint && (
+                     <p>Point : {currentPoint}</p>
+                  )}
+                  
                   {isManager && (
                      <p style={{ cursor: "pointer" }} onClick={() => navigate('/admin/main')}>운영자</p>
                   )}

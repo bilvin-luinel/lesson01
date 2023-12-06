@@ -1,13 +1,52 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import jwtDecode from 'jwt-decode'
+import { updatePoint } from '../redux/actions/pointAction'
 
 const NccDp = () => {
+
+   const navigate = useNavigate()
 
    const [bettingMoney, setBettingMoney] = useState()
    const [currentMoney, setCurrentMoney] = useState(100000)
 
    const [showResult, setShowResult] = useState(false)
 
+   const dispatch = useDispatch()
+   const currentPoint = useSelector((state) => state.point.point)
+
+
+   useEffect(() => {
+      if (!localStorage.getItem('token')) {
+         navigate('/')
+      }
+   }, [])
+
+   useEffect(() => {
+      if (!localStorage.getItem('token')) {
+         return
+      } else {
+         fetchPoint()
+      }
+   }, [dispatch])
+
+   const fetchPoint = async () => {
+      const response = await fetch('http://172.30.1.99:8585/fetch-point', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+            userId: jwtDecode(localStorage.getItem('token')).userId
+         })
+      })
+      if (response.status === 200) {
+         const data = await response.json()
+         dispatch(updatePoint(data))
+      }
+   }
 
    const isNumeric = (value) => {
       // 숫자로만 구성되어 있는지 확인하는 정규 표현식
@@ -55,6 +94,24 @@ const NccDp = () => {
       }
    }
 
+
+   const addPoint_1000 = async () => {
+      if (localStorage.getItem('token')) {
+         const response = await fetch('http://172.30.1.99:8585/add-point-1000', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+               userId: jwtDecode(localStorage.getItem('token')).userId
+            })
+         })
+         if (response.status === 200) {
+            fetchPoint()
+         }
+      }
+   }
+
    return (
       <div>
          <Navbar />
@@ -81,6 +138,14 @@ const NccDp = () => {
             </div>
             <p style={{ marginTop: "20px" }}>잔액 : {currentMoney.toLocaleString()}원</p>
             <p style={{ color: "red", marginTop: "10px" }}>성공 시 배팅 금액 x 1.93</p>
+
+
+            <div style={{
+               backgroundColor: 'rgba(0,0,0,0.7)', color: 'white', textAlign: 'center',
+               marginTop: '50px', cursor: 'pointer', padding: '10px'
+            }} onClick={addPoint_1000}>
+               1000점 추가
+            </div>
 
          </div>
       </div>

@@ -110,6 +110,34 @@ app.post('/check-admin', async (req, res) => {
         res.status(500).json(err)
     }
 })
+app.post('/fetch-point',async(req,res)=>{
+    const {userId} = req.body
+
+    try{
+        const user = await User.findById(userId)
+        const point = user.point
+
+        res.status(200).json(point)
+
+    }catch(err){
+        console.log(err)
+        res.status(500).json(err)
+    }
+})
+app.post('/add-point-1000',async (req,res) => {
+    const {userId} = req.body
+    try{
+        const user = await User.findById(userId)
+        if (user) {
+            user.point+=1000
+            await user.save()
+            res.status(200).json()
+        }
+        
+    } catch(err){
+        console.log(err)
+    }
+})
 
 
 

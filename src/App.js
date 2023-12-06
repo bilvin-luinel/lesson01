@@ -5,6 +5,7 @@ import Login from './Pages/Login';
 import NccDp from './Pages/NccDp';
 import Detail from './Pages/Detail';
 import Admin from './Pages/Admin';
+import Dolim from './Pages/Dolim';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/nccdp' element={<NccDp />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/admin/:id' element={<Admin />} />
+        <Route path='/dolim' element={<Dolim />} />
       </Routes>
     </div>
   );
